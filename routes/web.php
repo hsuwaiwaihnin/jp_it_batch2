@@ -19,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('staff','StaffController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

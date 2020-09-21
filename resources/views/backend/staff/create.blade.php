@@ -14,6 +14,7 @@
     </div>
 @endif
 {{-- Form --}}
+<div class="row">
 <form method="post" action="{{route('staff.store')}}" enctype="multipart/form-data">
 	@csrf
 	<div class="form-group">
@@ -22,7 +23,7 @@
 	</div>
 	<div class="form-group">
 		<label for="InputProfile">Profile</label>
-		<input type="file" class="form-control" id="InputProfile" name="profile">
+		<input type="file" class="form-control-file" id="InputProfile" name="profile">
 	</div>
 	<div class="form-group">
 		<label for="InputPhone">Phone No.</label>
@@ -38,4 +39,5 @@
 	</div>
 	<button type="submit" class="btn btn-primary">Create</button>	
 </form>
+</div>
 @endsection

@@ -2,13 +2,16 @@
 @section('title','Staff Detail')
 
 @section('content')
-<h1>Staff Detail</h1>
-<a href="{{route('staff.index')}}">Back</a>
+<div class="row">
+<div class="col-md-12">
+<h1>Staff Details</h1>
 
-<img src="{{asset($staff->profile)}}" alt="Satff's Profile" style="width: 150px; height: 150px;">
+<img src="{{asset($staff->profile)}}" alt="Satff's Profile" class="img-fluid w-25 h-50">
 <p>Name: {{$staff->name}}</p>
 <p>Phone No: {{$staff->phoneno}}</p>
 <p>Address: {{$staff->address}}</p>
 <p>Salary: {{$staff->salary}}</p>
-
+<a href="{{route('staff.index')}}" class="btn btn-success">Back</a>
+</div>
+</div>
 @endsection
