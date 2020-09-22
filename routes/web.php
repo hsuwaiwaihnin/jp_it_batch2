@@ -23,6 +23,10 @@ Route::get('detail/{id}','MainController@detail')->name('detailpage');
 
 Route::resource('staff','StaffController');
 
+Route::resource('payrolls','PayrollController');
+
+Route::post('getstaff','PayrollController@getstaff')->name('getstaff');
+
 
 Auth::routes();
 

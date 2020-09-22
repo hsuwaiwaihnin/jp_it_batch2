@@ -30,12 +30,16 @@
 		<label for="InputName">Name</label>
 		<input type="text" class="form-control" id="InputName" name="name" value="{{$staff->name}}">
 	</div>
-	{{-- <div class="form-group">
+	<div class="form-group">
 		<label for="InputDepartment">Department:</label>
 		<select name="department" class="form-control">
 			<optgroup label="Choose Department">
 				@foreach($departments as $row)
-				<option value="{{$row->id}}">{{$row->name}}</option>
+				<option value="{{$row->id}}"
+					@if($row->id==$staff->department_id)
+					{{'selected'}}
+					@endif
+				>{{$row->name}}</option>
 				@endforeach
 			</optgroup>
 		</select>
@@ -45,11 +49,15 @@
 		<select name="position" class="form-control">
 			<optgroup label="Choose Position">
 				@foreach($positions as $row)
-				<option value="{{$row->id}}">{{$row->name}}</option>
+				<option value="{{$row->id}}"
+					@if($row->id==$staff->position_id)
+					{{'selected'}}
+					@endif
+				>{{$row->name}}</option>
 				@endforeach
 			</optgroup>
 		</select>
-	</div> --}}
+	</div>
 	<div class="form-group">
 		<label for="InputPhone">Phone No.</label>
 		<input type="text" class="form-control" id="InputPhone" name="phoneno" value="{{$staff->phoneno}}">
