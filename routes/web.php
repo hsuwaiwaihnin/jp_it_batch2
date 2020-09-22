@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
+Route::get('/','MainController@main')->name('homepage');
+
+Route::get('detail/{id}','MainController@detail')->name('detailpage');
+
 Route::resource('staff','StaffController');
 
 

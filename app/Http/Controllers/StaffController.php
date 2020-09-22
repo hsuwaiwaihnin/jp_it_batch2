@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Staff;
 use Illuminate\Http\Request;
+use App\Department;
+use App\Position;
 
 class StaffController extends Controller
 {
@@ -27,7 +29,9 @@ class StaffController extends Controller
     public function create()
     {
         //
-        return view('backend.staff.create');
+        $departments=Department::all();
+        $positions=Position::all();
+        return view('backend.staff.create',compact('departments','positions'));
     }
 
     /**
@@ -44,7 +48,9 @@ class StaffController extends Controller
             "profile"=>"required",
             "phoneno"=>"required",
             "address"=>"required",
-            "salary"=>"required"
+            "salary"=>"required",
+            "department" => "required",
+            "position" => "required"
         ]);
 
         //Upload File
@@ -61,6 +67,8 @@ class StaffController extends Controller
         $staff->phoneno = $request->phoneno;
         $staff->address = $request->address;
         $staff->salary = $request->salary;
+        $staff->department_id = $request->department;
+        $staff->position_id = $request->position;
         $staff->save();
 
         // return redirect
@@ -106,7 +114,9 @@ class StaffController extends Controller
             "profile"=>"sometimes",
             "phoneno"=>"required",
             "address"=>"required",
-            "salary"=>"required"
+            "salary"=>"required",
+            //"department" => "required",
+            //"position" => "required"
         ]);
 
         //Upload File
@@ -124,6 +134,8 @@ class StaffController extends Controller
         $staff->phoneno = $request->phoneno;
         $staff->address = $request->address;
         $staff->salary = $request->salary;
+        //$staff->department_id = $request->department;
+        //$staff->position_id = $request->position;
         $staff->save();
 
         // return redirect
