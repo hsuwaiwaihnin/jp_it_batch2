@@ -42,7 +42,29 @@ class PayrollController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "staff_id"=>"required",
+            "a_bonus"=>"required",
+            "a_dedu"=>"required",
+            "o_bonus"=>"required",
+            "o_dedu"=>"required",
+            "ssb" => "required",
+            "total" => "required"
+        ]);
+
+        // data store
+        $payroll = new Payroll;
+        $payroll->staff_id = $request->staff_id;
+        $payroll->attendance_bonus =$request->a_bonus;
+        $payroll->attendance_deduction = $request->a_dedu;
+        $payroll->other_bonus = $request->o_bonus;
+        $payroll->other_deduction = $request->o_dedu;
+        $payroll->ssb = $request->ssb;
+        $payroll->total = $request->total;
+        $payroll->save();
+
+        // return redirect
+        return redirect()->route('payrolls.index');
     }
 
     /**
@@ -94,6 +116,13 @@ class PayrollController extends Controller
     {
         $position = $request->position;
         $staff = Staff::where('position_id',$position)->get();
+        return $staff;
+    }
+
+    public function getastaff(Request $request)
+    {
+        $id=$request->id;
+        $staff=Staff::find($id);
         return $staff;
     }
 }

@@ -11,6 +11,8 @@
 <p>Phone No: {{$staff->phoneno}}</p>
 <p>Address: {{$staff->address}}</p>
 <p>Salary: {{$staff->salary}}</p>
+<p>Department: {{$staff->department->name}}</p>
+<p>Position: {{$staff->position->name}}</p>
 <a href="{{route('staff.index')}}" class="btn btn-success">Back</a>
 </div>
 </div>

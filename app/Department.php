@@ -9,4 +9,10 @@ class Department extends Model
     protected $fillabe=[
     	'name'
     ];
+
+    public function staff()
+    {
+        return $this->hasMany('App\Staff');
+    }
+    
 }

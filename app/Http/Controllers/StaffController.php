@@ -84,7 +84,9 @@ class StaffController extends Controller
     public function show(Staff $staff)
     {
         //
-        return view('backend.staff.detail',compact('staff'));
+        $departments=Department::all();
+        $positions=Position::all();
+        return view('backend.staff.detail',compact('staff','departments','positions'));
     }
 
     /**
@@ -117,8 +119,8 @@ class StaffController extends Controller
             "phoneno"=>"required",
             "address"=>"required",
             "salary"=>"required",
-            //"department" => "required",
-            //"position" => "required"
+            "department" => "required",
+            "position" => "required"
         ]);
 
         //Upload File
@@ -136,8 +138,8 @@ class StaffController extends Controller
         $staff->phoneno = $request->phoneno;
         $staff->address = $request->address;
         $staff->salary = $request->salary;
-        //$staff->department_id = $request->department;
-        //$staff->position_id = $request->position;
+        $staff->department_id = $request->department;
+        $staff->position_id = $request->position;
         $staff->save();
 
         // return redirect

@@ -27,6 +27,8 @@ Route::resource('payrolls','PayrollController');
 
 Route::post('getstaff','PayrollController@getstaff')->name('getstaff');
 
+Route::post('getastaff','PayrollController@getastaff')->name('getastaff');
+
 
 Auth::routes();
 
