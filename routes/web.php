@@ -21,15 +21,25 @@ Route::get('/','MainController@main')->name('homepage');
 
 Route::get('detail/{id}','MainController@detail')->name('detailpage');
 
-Route::resource('staff','StaffController');
+Route::group(['middleware' => ['role:admin']], function (){
 
-Route::resource('payrolls','PayrollController');
+	Route::resource('staff','StaffController');
 
-Route::post('getstaff','PayrollController@getstaff')->name('getstaff');
+	Route::resource('payrolls','PayrollController');
 
-Route::post('getastaff','PayrollController@getastaff')->name('getastaff');
+	Route::post('getstaff','PayrollController@getstaff')->name('getstaff');
 
+	Route::post('getastaff','PayrollController@getastaff')->name('getastaff');
 
-Auth::routes();
+	Route::resource('editors','UserController');
+
+});
+
+Route::group(['middleware' => ['role:editor']], function (){
+	Route::resource('posts','PostController');
+});
+
+Auth::routes(['register'=>false]);
+/**/
 
 Route::get('/home', 'HomeController@index')->name('home');

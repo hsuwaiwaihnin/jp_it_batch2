@@ -79,9 +79,10 @@
             </div>
           </div>
         </div>
-
+        {{-- Departments Widget --}}
+        <x-department></x-department>
         <!-- Categories Widget -->
-
+        <x-category></x-category>
         <!-- Side Widget -->
         <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
